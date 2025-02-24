@@ -1,0 +1,66 @@
+﻿@using MVC_CORE_PROJE.Models.ViewModels
+@model Kullanici
+@{
+    ViewData["Title"] = "CalisanDetay";
+}
+
+<h1>Çalışan Detay</h1>
+
+<div>
+    <hr />
+    <input asp-for="Id" class="form-control" type="hidden" />
+    <dl class="row">
+        <dt class="col-sm-2">
+            İsim
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Isim)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Soyisim)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Soyisim)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cinsiyet)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cinsiyet)
+        </dd>
+        <dt class="col-sm-2">
+            Telefon Numarası
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            İşe Giriş Tarihi
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IseGirisTarihi)
+        </dd>
+        <dt class="col-sm-2">
+            E-Posta
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AktifMi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AktifMi)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a href="@Url.Action("CalisanGuncelle", new { id = Model.Id })" class="btn btn-primary">Güncelle</a>
+    <a asp-action="CalisanListele" class="btn btn-secondary">Listeye Geri Dön</a>
+</div>

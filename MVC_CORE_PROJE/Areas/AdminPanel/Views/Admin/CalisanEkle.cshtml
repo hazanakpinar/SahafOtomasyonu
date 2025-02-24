@@ -1,0 +1,65 @@
+﻿@model IdentityMVCManuel.Models.ViewModels.CalisanKayit_VM
+
+@{
+    ViewData["Title"] = "CalisanEkle";
+}
+
+<h1>YENİ ÇALIŞAN KAYDET</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CalisanEkle">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Isim" class="control-label">İsim</label>
+                <input asp-for="Isim" class="form-control" />
+                <span asp-validation-for="Isim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Soyisim" class="control-label">Soyisim</label>
+                <input asp-for="Soyisim" class="form-control" />
+                <span asp-validation-for="Soyisim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adres" class="control-label">Adres</label>
+                <input asp-for="Adres" class="form-control" />
+                <span asp-validation-for="Adres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cinsiyet" class="control-label">Cinsiyet</label>
+                <select asp-for="Cinsiyet" asp-items="@ViewBag.Cinsiyetler" class="form-control"></select>
+                <span asp-validation-for="Cinsiyet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelefonNumarasi" class="control-label">Telefon Numarası</label>
+                <input type="number" asp-for="TelefonNumarasi" class="form-control" placeholder="90 xxx xxx xx xx" />
+                <span asp-validation-for="TelefonNumarasi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IseGirisTarihi" class="control-label">İşe Giriş Tarihi</label>
+                <input type="date" asp-for="IseGirisTarihi" class="form-control" />
+                <span asp-validation-for="IseGirisTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">E-Mail Adresi</label>
+                <input type="email" asp-for="Email" class="form-control" placeholder="ornek@mail.com" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sifre" class="control-label">Şifre</label>
+                <input asp-for="Sifre" class="form-control" type="password" />
+                <span asp-validation-for="Sifre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SifreDogrulama" class="control-label">Şifre Doğrulama</label>
+                <input asp-for="SifreDogrulama" class="form-control" type="password" />
+                <span asp-validation-for="SifreDogrulama" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Kayıt Et" class="btn btn-success" />
+    <a asp-controller="Admin" asp-action="CalisanListele" class="btn btn-secondary">Listeye Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>

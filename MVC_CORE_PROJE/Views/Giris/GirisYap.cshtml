@@ -1,0 +1,72 @@
+﻿@model IdentityMVCManuel.Models.ViewModels.Giris_VM
+
+@{
+    ViewData["Title"] = "Giriş Yap";
+}
+
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 gradient-bg">
+
+    <div class="card shadow p-5" style="width: 100%; max-width: 450px; background: rgba(255, 255, 255, 0.9); border-radius: 20px; box-shadow: 0px 8px 16px rgba(0,0,0,0.3);">
+        
+        <div class="text-center mb-4">
+            <img src="https://img.icons8.com/fluency/48/000000/user-shield.png" alt="Login Icon" />
+            <h2 class="font-weight-bold text-primary mt-3" style="color: #333;">Hoş Geldiniz!</h2>
+            <p class="text-muted">Hesabınıza güvenli bir şekilde giriş yapın</p>
+        </div>
+
+        <form asp-action="GirisYap">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group position-relative">
+                <label asp-for="Email" class="control-label font-weight-bold" style="color: #555;">E-Mail Adresi</label>
+                <input asp-for="Email" class="form-control rounded-pill pl-5" placeholder="name@example.com" style="padding: 15px; background: #f7f9fc; border: 1px solid #ddd;" />
+                <i class="fas fa-envelope position-absolute" style="top: 50%; left: 15px; transform: translateY(-50%); color: #aaa;"></i>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3 position-relative">
+                <label asp-for="Sifre" class="control-label font-weight-bold" style="color: #555;">Şifre</label>
+                <input asp-for="Sifre" class="form-control rounded-pill pl-5" type="password" placeholder="••••••••" style="padding: 15px; background: #f7f9fc; border: 1px solid #ddd;" />
+                <i class="fas fa-lock position-absolute" style="top: 50%; left: 15px; transform: translateY(-50%); color: #aaa;"></i>
+                <span asp-validation-for="Sifre" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group mt-4 text-center">
+                <button type="submit" class="btn btn-primary rounded-pill font-weight-bold gradient-button">
+                    Giriş Yap
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<style>
+
+    .gradient-bg {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradientAnimation 15s ease infinite;
+    }
+
+
+    .gradient-button {
+        background: linear-gradient(90deg, #23a6d5, #23d5ab);
+        border: none;
+        padding: 15px;
+        font-size: 1.1rem;
+        color: white;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        transition: transform 0.2s;
+    }
+
+    .gradient-button:active {
+        transform: scale(0.98);
+    }
+
+
+   
+</style>

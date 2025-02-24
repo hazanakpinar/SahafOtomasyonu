@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MVC_CORE_PROJE.Models
+@inject SignInManager<Kullanici> SignInManager
+@inject UserManager<Kullanici> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <h3 class="navbar-brand text-dark mb-0">Hoşgeldin!</h3>
+            <form id="logoutForm" asp-area="" asp-controller="Giris" asp-action="CikisYap">
+                <button id="logout" type="submit" class="btn btn-outline-danger">Çıkış Yap</button>
+            </form>
+        </div>
+    </nav>
+}

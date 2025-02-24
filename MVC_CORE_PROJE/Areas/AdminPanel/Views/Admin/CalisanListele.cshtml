@@ -1,0 +1,84 @@
+﻿@using MVC_CORE_PROJE.Models
+@model IEnumerable<Kullanici>
+
+@{
+    ViewData["Title"] = "CalisanListele";
+}
+
+<h1>Çalışanların Listesi</h1>
+
+<p>
+    <a class="btn btn-warning" asp-action="CalisanEkle">Yeni Çalışan Ekle</a>
+    <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Index", "Admin", new { area = "AdminPanel" })'">Rapor Sayfasına Dön</button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @foreach(var item in Model)
+            {
+                <input asp-for="@item.Id" class="form-control" type="hidden" />
+            }
+            <th>
+                İsim
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soyisim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cinsiyet)
+            </th>
+            <th>
+               Telefon Numarası
+            </th>
+            <th>
+                İşe Giriş Tarihi
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.AktifMi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Isim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soyisim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cinsiyet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IseGirisTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AktifMi)
+            </td>
+            <td>
+                    <a href="@Url.Action("CalisanGuncelle", new { id = item.Id })" class="btn btn-success">Güncelle</a>
+                    <a href="@Url.Action("CalisanDetay", new { id = item.Id })" class="btn btn-info">Detay</a>
+                    <a href="@Url.Action("CalisanSil", new { id = item.Id })" class="btn btn-danger">Sil</a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

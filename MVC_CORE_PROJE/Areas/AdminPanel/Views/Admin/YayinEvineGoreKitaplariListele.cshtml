@@ -1,0 +1,70 @@
+﻿@model IEnumerable<dynamic>
+
+<h3 style="text-align: center; color: #333;">SEÇİLİ YAYINEVİNDEKİ KİTAPLAR</h3>
+<button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Index", "Admin", new { area = "AdminPanel" })'"> Rapor Sayfasına Dön</button>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    img {
+        width: 50px;
+        height: auto;
+        border-radius: 4px;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Kitap ID</th>
+            <th>Kitap Adı</th>
+            <th>Fiyat</th>
+            <th>Kapak Resmi</th>
+            <th>Kategori</th>
+            <th>Yazar</th>
+            <th>Yayın Evi</th>
+            <th>Stok</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kitap in Model)
+        {
+            <tr>
+                <td>@kitap.KitapID</td>
+                <td>@kitap.KitapAdi</td>
+                <td>@kitap.Fiyat</td>
+                <td><img src="@kitap.KapakResmi" alt="Kapak Resmi" /></td>
+                <td>@kitap.Kategori</td>
+                <td>@kitap.Yazar</td>
+                <td>@kitap.YayinEvi</td>
+                <td>@kitap.Stok</td>
+            </tr>
+        }
+    </tbody>
+</table>

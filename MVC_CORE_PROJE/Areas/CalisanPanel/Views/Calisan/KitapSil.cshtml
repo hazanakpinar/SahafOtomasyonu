@@ -1,0 +1,67 @@
+﻿@model MVC_CORE_PROJE.Models.Kitap
+@{
+    ViewData["Title"] = "KitapSil";
+}
+<h3 class="text-center">Kitabı Silmek İstediğinize Emin Misiniz?</h3>
+<div class="container mt-4">
+    <hr />
+    <form asp-area="CalisanPanel" asp-controller="Calisan" asp-action="KitapSil" method="post">
+        <input type="hidden" name="KitapID" value="@Model.KitapID" />
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="border p-2 mb-3 text-center">
+                    <strong>@Html.DisplayNameFor(model => model.KitapAdi)</strong><br />
+                    @Html.DisplayFor(model => model.KitapAdi)
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="border p-2 mb-3 text-center">
+                    <strong>@Html.DisplayNameFor(model => model.Fiyat)</strong><br />
+                    @Model.Fiyat.ToString("C")
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="border p-2 mb-3 text-center">
+                    <strong>@Html.DisplayNameFor(model => model.Stok)</strong><br />
+                    @Html.DisplayFor(model => model.Stok)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="border p-2 mb-3 text-center">
+                    <strong>Yazar Adı</strong><br />
+                    @string.Join(", ", Model.Kitap_Yazarlar.Select(y => y.Yazar.YazarAdi))
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="border p-2 mb-3 text-center">
+                    <strong>Yayın Evi Adı</strong><br />
+                    @Html.DisplayFor(model => model.YayinEvi.YayinEviAdi)
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="border p-2 mb-3 text-center">
+                    <strong>Kategori Adı</strong><br />
+                    @Html.DisplayFor(model => model.Kategori.KategoriAdi)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="border p-2 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.KapakResmi)</strong><br />
+                    <img src="@Model.KapakResmi" style="max-height: 200px; max-width: 180px;" />
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <input type="submit" value="Sil" class="btn btn-danger" />
+            <a asp-action="KitapListele" class="btn btn-secondary">Listeye Geri Dön</a>
+        </div>
+    </form>
+</div>

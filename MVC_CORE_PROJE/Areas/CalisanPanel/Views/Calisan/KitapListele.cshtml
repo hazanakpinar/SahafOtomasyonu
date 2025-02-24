@@ -1,0 +1,96 @@
+﻿@model IEnumerable<dynamic>
+
+<h3 style="text-align: center; color: #333;">TÜM KİTAPLAR</h3>
+
+<div class="button-container">
+    <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("KitapEkle")'">Yeni Kitap Ekle</button>
+    @if (User.IsInRole("Admin"))
+    {
+        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Index", "Admin", new { area = "AdminPanel" })'"> Rapor Sayfasına Dön</button>
+    }
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+
+    img {
+        width: 40px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    .button-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn {
+        flex: 1;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            @*  <th>Kitap ID</th> *@
+            <th>Kitap Adı</th>
+            <th>Fiyat</th>
+            <th>Kapak Resmi</th>
+            <th>Kategori</th>
+            <th>Yazar</th>
+            <th>Yayın Evi</th>
+            <th>Stok</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kitap in Model)
+        {
+            <tr>
+                <td>@kitap.KitapAdi</td>
+                <td>@kitap.Fiyat.ToString("C")</td>
+                <td><img src="@kitap.KapakResmi" alt="Kapak Resmi" /></td>
+                <td>@kitap.Kategori</td>
+                <td>@kitap.Yazar</td>
+                <td>@kitap.YayinEvi</td>
+                <td>@kitap.Stok</td>
+                <td>
+                    <div class="button-container">
+                        <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("KitapGuncelle", new { id = kitap.KitapID })'">Güncelle</button>
+                        <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("KitapDetay", new { id = kitap.KitapID })'">Detay</button>
+                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("KitapSil", new { id = kitap.KitapID })'">Sil</button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

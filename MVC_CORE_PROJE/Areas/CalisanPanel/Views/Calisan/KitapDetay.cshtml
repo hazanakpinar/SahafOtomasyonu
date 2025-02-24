@@ -1,0 +1,68 @@
+﻿@model Kitap
+@{
+    ViewData["Title"] = "Kitap Detay";
+}
+
+<h1 class="text-center my-4">@ViewData["Title"]</h1>
+<hr />
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 bg-light p-4 rounded shadow">
+            <dl class="row">
+                <dt class="col-sm-4 font-weight-bold">
+                    Kitap Adı
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.KitapAdi
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    Fiyat
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.Fiyat.ToString("C")
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    Stok
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Stok)
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    Kapak Resmi
+                </dt>
+                <dd class="col-sm-8">
+                    <img src="@Model.KapakResmi" class="img-fluid rounded border" style="max-width: 180px; max-height: 200px;" alt="@Model.KitapAdi" />
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    Yazar Adı
+                </dt>
+                <dd class="col-sm-8">
+                    @string.Join(", ", Model.Kitap_Yazarlar.Select(y => y.Yazar.YazarAdi))
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    Yayın Evi Adı
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.YayinEvi.YayinEviAdi)
+                </dd>
+
+                <dt class="col-sm-4 font-weight-bold">
+                    Kategori Adı
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Kategori.KategoriAdi)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    @Html.ActionLink("Güncelle", "KitapGuncelle", new { id = Model.KitapID }, new { @class = "btn btn-primary" })
+    <a asp-action="KitapListele" class="btn btn-secondary">Listeye Dön</a>
+</div>
